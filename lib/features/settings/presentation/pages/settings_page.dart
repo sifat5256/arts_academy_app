@@ -13,10 +13,12 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Colors.grey.shade100,
+      backgroundColor:  Colors.grey.shade100.withOpacity(0.5),
       appBar: AppBar(
+        elevation: 0, // remove shadow completely
+        surfaceTintColor: Colors.transparent,
         backgroundColor: Colors.white,
-        elevation: 1,
+
         centerTitle: true,
         title: Text(
           "Settings",
@@ -35,7 +37,7 @@ class SettingsPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0.h),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8)
+                borderRadius: BorderRadius.circular(5)
               ),
               child: Card(
                 elevation: 0.2,

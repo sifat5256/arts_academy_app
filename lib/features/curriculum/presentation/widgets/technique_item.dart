@@ -32,6 +32,9 @@ class TechniqueItem extends StatelessWidget {
             offset: const Offset(0, 1),
           ),
         ],
+        border: Border.all(
+            color: Colors.grey.shade300
+        ),
       ),
       child: Row(
         children: [

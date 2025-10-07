@@ -18,7 +18,7 @@ class CurriculumPage extends StatelessWidget {
     final controller = Get.put(CurriculumController());
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFD),
+      backgroundColor: Colors.grey.shade100.withOpacity(0.5),
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: false,

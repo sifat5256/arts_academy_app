@@ -22,7 +22,7 @@ class AboutCard extends StatelessWidget {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             "XLV Martial Arts Academy",
@@ -45,8 +45,9 @@ class AboutCard extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 12.sp,
               height: 1.4,
-              color: Colors.grey[700],
+              color: Colors.grey,
             ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),

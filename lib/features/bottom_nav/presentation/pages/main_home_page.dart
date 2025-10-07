@@ -41,21 +41,21 @@ class MainHomePage extends StatelessWidget {
             unselectedItemColor: Colors.grey,
             selectedLabelStyle: GoogleFonts.poppins(fontSize: 12.sp),
             unselectedLabelStyle: GoogleFonts.poppins(fontSize: 11.sp),
-            items: const [
+            items:  [
               BottomNavigationBarItem(
-                icon: Icon(BootstrapIcons.flag),
+                icon: Icon(BootstrapIcons.flag,size: 16.r,),
                 label: "Training",
               ),
               BottomNavigationBarItem(
-                icon: Icon(BootstrapIcons.list_task),
+                icon: Icon(BootstrapIcons.list_task,size: 16.r,),
                 label: "Curriculum",
               ),
               BottomNavigationBarItem(
-                icon: Icon(BootstrapIcons.calendar2_check),
+                icon: Icon(BootstrapIcons.calendar2_check,size: 16.r,),
                 label: "Schedule",
               ),
               BottomNavigationBarItem(
-                icon: Icon(BootstrapIcons.gear),
+                icon: Icon(BootstrapIcons.gear,size: 16.r,),
                 label: "Settings",
               ),
             ],

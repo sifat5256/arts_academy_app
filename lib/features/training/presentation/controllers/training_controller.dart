@@ -2,7 +2,14 @@ import 'package:get/get.dart';
 import '../../data/model/training_model.dart';
 
 class TrainingController extends GetxController {
+  // Dropdown variables
+  bool isDropdownExpanded = false;
+  String selectedProgram = 'BJJ';
+  List<String> programs = ['BJJ', 'All', 'Eskrima', 'Capoeira', 'Kyokushin Savate'];
+
+  // Training data
   List<TrainingModel> trainings = [];
+  List<TrainingModel> filteredTrainings = [];
 
   @override
   void onInit() {
@@ -19,7 +26,8 @@ class TrainingController extends GetxController {
         title: "Guard Passes & Escapes",
         instructor: "Xingu Del Rosario",
         time: "7:00 PM",
-        videoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT42giTxBcOLZItBWNnRAxJj2wc_64pj8Iu-6Wlug79sHUkKSyAz5YTzds&s",
+        videoUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT42giTxBcOLZItBWNnRAxJj2wc_64pj8Iu-6Wlug79sHUkKSyAz5YTzds&s",
         videoDuration: "12:45",
         notes:
         "Focused on hip escape fundamentals and guard retention. Practiced knee shield guard and worked on creating angles for escapes.",
@@ -34,7 +42,7 @@ class TrainingController extends GetxController {
       TrainingModel(
         day: "Tuesday",
         date: "Oct 5",
-        program: "CAPOEIRA",
+        program: "Capoeira",
         title: "Ginga & Basic Movements",
         instructor: "Paris Synder",
         time: "6:30 PM",
@@ -43,11 +51,12 @@ class TrainingController extends GetxController {
       TrainingModel(
         day: "Wednesday",
         date: "Oct 6",
-        program: "ESKRIMA",
+        program: "Eskrima",
         title: "Single Stick Flow Patterns",
         instructor: "Fernando Chien",
         time: "12:00 PM",
-        videoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT42giTxBcOLZItBWNnRAxJj2wc_64pj8Iu-6Wlug79sHUkKSyAz5YTzds&s",
+        videoUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT42giTxBcOLZItBWNnRAxJj2wc_64pj8Iu-6Wlug79sHUkKSyAz5YTzds&s",
         videoDuration: "18:30",
         notes:
         "Advanced single stick flow patterns focusing on 6-count and 8-count combinations. Emphasized smooth transitions.",
@@ -73,14 +82,59 @@ class TrainingController extends GetxController {
       TrainingModel(
         day: "Friday",
         date: "Oct 8",
-        program: "CAPOEIRA",
+        program: "Capoeira",
         title: "Kicks & Dodges",
         instructor: "Paris Synder",
         time: "7:00 PM",
         isUpcoming: true,
       ),
+      TrainingModel(
+        day: "Saturday",
+        date: "Oct 9",
+        program: "BJJ",
+        title: "Guard Passes & Escapes",
+        instructor: "Xingu Del Rosario",
+        time: "7:00 PM",
+        videoUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT42giTxBcOLZItBWNnRAxJj2wc_64pj8Iu-6Wlug79sHUkKSyAz5YTzds&s",
+        videoDuration: "12:45",
+        notes:
+        "Focused on hip escape fundamentals and guard retention. Practiced knee shield guard and worked on creating angles for escapes.",
+        drills: [
+          "Hip Escape Drill",
+          "Knee Shield Positioning",
+          "Frame and Escape Sequence",
+        ],
+      ),
     ];
 
-    update(); // important to refresh GetBuilder
+    // Initially show BJJ items only
+    filterTrainings();
+  }
+
+  // 🔽 Dropdown handlers
+  void toggleDropdown() {
+    isDropdownExpanded = !isDropdownExpanded;
+    update();
+  }
+
+  void selectProgram(String program) {
+    selectedProgram = program;
+    isDropdownExpanded = false;
+    filterTrainings();
+    update();
+  }
+
+  // 🔽 Filter based on selected program
+  void filterTrainings() {
+    if (selectedProgram == 'All') {
+      filteredTrainings = List.from(trainings);
+    } else {
+      filteredTrainings = trainings
+          .where((t) =>
+      t.program.toLowerCase() == selectedProgram.toLowerCase())
+          .toList();
+    }
+    update();
   }
 }

@@ -18,7 +18,7 @@ class SchedulePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ScheduleController());
     return Scaffold(
-      backgroundColor: Colors.blue.shade50.withOpacity(0.2),
+      backgroundColor: Colors.grey.shade100.withOpacity(0.5),
       body: SafeArea(
         child: GetBuilder<ScheduleController>(
           builder: (_) {
@@ -31,7 +31,7 @@ class SchedulePage extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
                     decoration: BoxDecoration(
                       color: const Color(0xFFFFF4E5),
-                      borderRadius: BorderRadius.circular(6.r),
+
                       border: Border(
                         bottom: BorderSide(
                           color: Colors.amber, // 👈 only bottom border color
@@ -57,6 +57,11 @@ class SchedulePage extends StatelessWidget {
                             ),
                           ),
                         ),
+                        Icon(
+                          Icons.navigate_next,
+                          color: const Color(0xFFFF9800),
+                          size: 16.sp,
+                        ),
                       ],
                     ),
                   ),
@@ -73,10 +78,10 @@ class SchedulePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(
-                          BootstrapIcons.chevron_left,
-                          size: 20.sp,
-                          color: Colors.black87,
+                        CircleAvatar(
+                          radius: 16.r,
+                          backgroundColor: Colors.black12.withOpacity(0.05),
+                          child: const Icon(Icons.navigate_before, color: Colors.black),
                         ),
                         Row(
                           children: [
@@ -90,16 +95,16 @@ class SchedulePage extends StatelessWidget {
                             ),
                             SizedBox(width: 6.w),
                             Icon(
-                              BootstrapIcons.calendar2_week,
-                              size: 16.sp,
+                              BootstrapIcons.calendar2_check,
+                              size: 12.sp,
                               color: Colors.black54,
                             ),
                           ],
                         ),
-                        Icon(
-                          BootstrapIcons.chevron_right,
-                          size: 20.sp,
-                          color: Colors.black87,
+                        CircleAvatar(
+                          radius: 16.r,
+                          backgroundColor: Colors.black12.withOpacity(0.05),
+                          child: const Icon(Icons.navigate_next_outlined, color: Colors.black),
                         ),
                       ],
                     ),
@@ -159,8 +164,8 @@ class SchedulePage extends StatelessWidget {
                           child: Row(
                             children: [
                               Icon(
-                                BootstrapIcons.calendar_week,
-                                size: 18.sp,
+                                BootstrapIcons.calendar2_check,
+                                size: 12.sp,
                                 color: const Color(0xFF2196F3),
                               ),
                               SizedBox(width: 10.w),
@@ -191,8 +196,8 @@ class SchedulePage extends StatelessWidget {
                         child: Row(
                           children: [
                             Icon(
-                              BootstrapIcons.geo_alt_fill,
-                              size: 18.sp,
+                              BootstrapIcons.geo_alt,
+                              size: 12.sp,
                               color: const Color(0xFF4CAF50),
                             ),
                             SizedBox(width: 10.w),

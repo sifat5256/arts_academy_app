@@ -1,15 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:video_player/video_player.dart';
+import 'package:chewie/chewie.dart';
 import '../../data/model/training_model.dart';
 
-class TrainingCard extends StatelessWidget {
+class TrainingCard extends StatefulWidget {
   final TrainingModel training;
 
   const TrainingCard({super.key, required this.training});
 
   @override
+  State<TrainingCard> createState() => _TrainingCardState();
+}
+
+class _TrainingCardState extends State<TrainingCard> {
+  VideoPlayerController? _videoController;
+  ChewieController? _chewieController;
+  bool _isPlaying = false;
+
+  Future<void> _initializeVideo() async {
+    // load from assets (you can modify to load from network later if needed)
+    _videoController = VideoPlayerController.asset('assets/videos/demo.mp4');
+    await _videoController!.initialize();
+
+    _chewieController = ChewieController(
+      videoPlayerController: _videoController!,
+      autoPlay: true,
+      looping: false,
+      allowFullScreen: true,
+      allowMuting: true,
+      showControls: true,
+    );
+
+    setState(() {
+      _isPlaying = true;
+    });
+  }
+
+  @override
+  void dispose() {
+    _videoController?.dispose();
+    _chewieController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final training = widget.training;
     final colorMap = {
       'BJJ': Colors.blue,
       'CAPOEIRA': Colors.green,
@@ -19,34 +57,26 @@ class TrainingCard extends StatelessWidget {
     return Card(
       margin: EdgeInsets.symmetric(vertical: 10.h, horizontal: 14.w),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-      elevation: 0.2,
+      elevation: 0.4,
       color: Colors.white,
       child: Padding(
         padding: EdgeInsets.all(12.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Day and Program Badge
+            // Day + Badge
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "${training.day}",
-                      style: GoogleFonts.poppins(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Text(
-                      "${training.date}",
-                      style: GoogleFonts.poppins(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
+                    Text(training.day,
+                        style: GoogleFonts.poppins(
+                            fontSize: 14.sp, fontWeight: FontWeight.w600)),
+                    Text(training.date,
+                        style: GoogleFonts.poppins(
+                            fontSize: 12.sp, fontWeight: FontWeight.normal)),
                   ],
                 ),
                 Container(
@@ -55,146 +85,161 @@ class TrainingCard extends StatelessWidget {
                     color: colorMap[training.program]?.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(8.r),
                   ),
-                  child: Text(
-                    training.program,
-                    style: GoogleFonts.poppins(
-                      color: colorMap[training.program],
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                  child: Text(training.program,
+                      style: GoogleFonts.poppins(
+                        color: colorMap[training.program],
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w600,
+                      )),
                 ),
               ],
             ),
-
             SizedBox(height: 8.h),
 
-            // Title & Instructor
-            Text(
-              training.title,
-              style: GoogleFonts.poppins(
-                fontSize: 15.sp,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Text(
-              "with ${training.instructor}",
-              style: GoogleFonts.poppins(
-                fontSize: 13.sp,
-                color: Colors.grey.shade600,
-              ),
-            ),
-            Text(
-              training.time,
-              style: GoogleFonts.poppins(fontSize: 11.sp, color: Colors.blue),
-            ),
+            Text(training.title,
+                style: GoogleFonts.poppins(
+                    fontSize: 15.sp, fontWeight: FontWeight.w600)),
+            Text("with ${training.instructor}",
+                style: GoogleFonts.poppins(
+                    fontSize: 13.sp, color: Colors.grey.shade600)),
+            Text(training.time,
+                style:
+                GoogleFonts.poppins(fontSize: 11.sp, color: Colors.blue)),
+
             SizedBox(height: 10.h),
 
-            // Recap Video (if available)
+            // ✅ Recap Video Section
             if (training.videoDuration != null)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10),
+                  if (!_isPlaying)
+                    GestureDetector(
+                      onTap: _initializeVideo,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              topRight: Radius.circular(10)
+                            ),
+                            child: Image.network(
+                              training.videoUrl ??
+                                  'https://via.placeholder.com/400x200',
+                              height: 150.h,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.black54,
+                            ),
+                            padding: EdgeInsets.all(8.w),
+                            child:  Icon(Icons.play_arrow,
+                                color: Colors.white, size: 30.r),
+                          ),
+                          Positioned(
+                            right: 4.w,
+                              bottom: 4.h,
+
+
+                              child: Container(
+                                height: 20.h,
+                                width: 40.w,
+                                decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(5)
+
+                                ),
+                                child: Center(
+                                  child:   Text(
+                                    "${training.videoDuration}",
+                                    style: GoogleFonts.poppins(fontSize: 12.sp,color: Colors.white),
+                                  ),
+                                ),
+                              ))
+                        ],
+                      ),
+                    )
+                  else if (_chewieController != null &&
+                      _chewieController!
+                          .videoPlayerController.value.isInitialized)
+                    AspectRatio(
+                      aspectRatio:
+                      _videoController!.value.aspectRatio,
+                      child: Chewie(controller: _chewieController!),
                     ),
-                    child: Image.network(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT42giTxBcOLZItBWNnRAxJj2wc_64pj8Iu-6Wlug79sHUkKSyAz5YTzds&s',
-                      height: 130.h,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
                   SizedBox(height: 4.h),
                   Text(
-                    "Recap Video (${training.videoDuration})",
-                    style: GoogleFonts.poppins(fontSize: 12.sp),
+                    "Recap Video",
+                    style: GoogleFonts.poppins(fontSize: 12.sp,color: Colors.grey,fontWeight: FontWeight.w400),
                   ),
                 ],
               ),
 
             SizedBox(height: 8.h),
 
-            // Lesson Notes (if exists)
+            // Notes
             if (training.notes != null)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Lesson Notes",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 13.sp,
-                    ),
-                  ),
+                  Text("Lesson Notes",
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w600, fontSize: 13.sp)),
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(8.w),
                     decoration: BoxDecoration(
-                      color: Colors.blue.shade50.withOpacity(0.5),
+                      color: Colors.grey.shade100.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(8.r),
                     ),
-                    child: Text(
-                      "\n${training.notes!}",
-                      style: GoogleFonts.poppins(fontSize: 12.sp),
-                    ),
+                    child: Text(training.notes!,
+                        style: GoogleFonts.poppins(fontSize: 12.sp),
+                        textAlign: TextAlign.start),
                   ),
                 ],
               ),
 
-            // Drills Practiced Section
+            // Drills
             if (training.drills != null)
               Padding(
                 padding: EdgeInsets.only(top: 8.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Drills Practiced (${training.drills!.length})",
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 13.sp,
-                      ),
-                    ),
+                    Text("Drills Practiced (${training.drills!.length})",
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600, fontSize: 13.sp)),
                     ...training.drills!.map(
-                      (e) => Column(
-                        children: [
-                          SizedBox(
-                            height: 4.h,
+                          (e) => Padding(
+                        padding: EdgeInsets.symmetric(vertical: 3.h),
+                        child: Container(
+                          padding: EdgeInsets.all(6.w),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(7),
+                            color: Colors.grey.shade100.withOpacity(0.5),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(7),
-                                color: Colors.blue.shade50.withOpacity(0.5),
-                              ),
-                              child: Row(
-                                children: [
-                                  const Icon(
-                                    Icons.check,
-                                    size: 14,
-                                    color: Colors.green,
-                                  ),
-                                  SizedBox(width: 5.w),
-                                  Text(
-                                    e,
-                                    style: GoogleFonts.poppins(fontSize: 12.sp),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          child: Row(
+                            children: [
+                              const Icon(Icons.check,
+                                  size: 14, color: Colors.green),
+                              SizedBox(width: 5.w),
+                              Text(e,
+                                  style: GoogleFonts.poppins(fontSize: 12.sp)),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
 
-            // Upcoming Tag
+            // Upcoming
             if (training.isUpcoming)
               Center(
                 child: Padding(
@@ -204,13 +249,11 @@ class TrainingCard extends StatelessWidget {
                     children: [
                       const Icon(Icons.list, size: 18, color: Colors.orange),
                       SizedBox(width: 6.w),
-                      Text(
-                        "Upcoming",
-                        style: GoogleFonts.poppins(
-                          color: Colors.orange,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
+                      Text("Upcoming",
+                          style: GoogleFonts.poppins(
+                            color: Colors.orange,
+                            fontWeight: FontWeight.w500,
+                          )),
                     ],
                   ),
                 ),

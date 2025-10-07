@@ -18,9 +18,9 @@ class SettingsSectionTitle extends StatelessWidget {
       child: Text(
         title.toUpperCase(),
         style: GoogleFonts.poppins(
-          fontSize: 14.sp,
+          fontSize: 15.sp,
           fontWeight: FontWeight.w600,
-          color: Colors.grey[700],
+          color: Colors.grey,
           letterSpacing: 0.5,
         ),
       ),

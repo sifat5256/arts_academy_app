@@ -14,8 +14,8 @@ class HeaderNavigation extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 16.r,
-            backgroundColor: Colors.black12,
-            child: const Icon(Icons.navigate_before, color: Colors.grey),
+            backgroundColor: Colors.black12.withOpacity(0.05),
+            child: const Icon(Icons.navigate_before, color: Colors.black),
           ),
           Text(
             "Oct 4-10, 2024",
@@ -26,8 +26,8 @@ class HeaderNavigation extends StatelessWidget {
           ),
           CircleAvatar(
             radius: 16.r,
-            backgroundColor: Colors.black12,
-            child: const Icon(Icons.navigate_next, color: Colors.grey),
+            backgroundColor: Colors.black12.withOpacity(0.05),
+            child: const Icon(Icons.navigate_next, color: Colors.black),
           ),
         ],
       ),

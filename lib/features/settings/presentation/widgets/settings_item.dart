@@ -34,8 +34,8 @@ class SettingsItem extends StatelessWidget {
               child: Text(
                 title,
                 style: GoogleFonts.poppins(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w500,
+                  fontSize: 13.sp,
+                  fontWeight: FontWeight.normal,
                   color: isDestructive ? Colors.red : Colors.black87,
                 ),
               ),

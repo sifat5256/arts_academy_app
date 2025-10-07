@@ -35,6 +35,9 @@ class CurriculumSection extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12.r),
+              border: Border.all(
+                color: Colors.grey.shade300
+              ),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.05),
