@@ -45,7 +45,7 @@ class CurriculumPage extends StatelessWidget {
             CurriculumSection(
               index: 0,
               title: "Brazilian Jiu-Jitsu",
-              iconImage: "https://media.istockphoto.com/id/2097346937/photo/karate-training-kids-of-different-ages-in-kimono.jpg?s=612x612&w=0&k=20&c=LxBeJMC_IoAvp350MREpJ-lYVhnTWpLPzigUsZKLguY=",
+              iconImage:    "assets/images/demo.jpg",
               isExpanded: controller.expandedIndex.value == 0,
               onTap: () => controller.toggleSection(0),
               techniques: [
@@ -53,19 +53,19 @@ class CurriculumPage extends StatelessWidget {
                   "title": "Guard Pass Fundamentals",
                   "subtitle": "Ground Control",
                   "duration": "12:45",
-                  "image": "https://media.istockphoto.com/id/2097346937/photo/karate-training-kids-of-different-ages-in-kimono.jpg?s=612x612&w=0&k=20&c=LxBeJMC_IoAvp350MREpJ-lYVhnTWpLPzigUsZKLguY=",
+                  "image":     "assets/images/demo.jpg",
                 },
                 {
                   "title": "Armbar from Mount",
                   "subtitle": "Submissions",
                   "duration": "8:30",
-                  "image": "https://media.istockphoto.com/id/2097346937/photo/karate-training-kids-of-different-ages-in-kimono.jpg?s=612x612&w=0&k=20&c=LxBeJMC_IoAvp350MREpJ-lYVhnTWpLPzigUsZKLguY=",
+                  "image":     "assets/images/demo.jpg",
                 },
                 {
                   "title": "Hip Escape Basics",
                   "subtitle": "Escapes",
                   "duration": "10:15",
-                  "image": "https://media.istockphoto.com/id/2097346937/photo/karate-training-kids-of-different-ages-in-kimono.jpg?s=612x612&w=0&k=20&c=LxBeJMC_IoAvp350MREpJ-lYVhnTWpLPzigUsZKLguY=",
+                  "image":    "assets/images/demo.jpg",
                 },
               ],
             ),
@@ -74,7 +74,7 @@ class CurriculumPage extends StatelessWidget {
             CurriculumSection(
               index: 1,
               title: "Capoeira",
-              iconImage: "https://media.istockphoto.com/id/2097346937/photo/karate-training-kids-of-different-ages-in-kimono.jpg?s=612x612&w=0&k=20&c=LxBeJMC_IoAvp350MREpJ-lYVhnTWpLPzigUsZKLguY=",
+              iconImage:     "assets/images/demo.jpg",
               isExpanded: controller.expandedIndex.value == 1,
               onTap: () => controller.toggleSection(1),
               techniques: [],
@@ -84,7 +84,7 @@ class CurriculumPage extends StatelessWidget {
             CurriculumSection(
               index: 2,
               title: "Eskrima",
-              iconImage: "https://media.istockphoto.com/id/2097346937/photo/karate-training-kids-of-different-ages-in-kimono.jpg?s=612x612&w=0&k=20&c=LxBeJMC_IoAvp350MREpJ-lYVhnTWpLPzigUsZKLguY=",
+              iconImage:    "assets/images/demo.jpg",
               isExpanded: controller.expandedIndex.value == 2,
               onTap: () => controller.toggleSection(2),
               techniques: [
@@ -92,7 +92,7 @@ class CurriculumPage extends StatelessWidget {
                   "title": "Single Stick Flow",
                   "subtitle": "Weapons",
                   "duration": "18:45",
-                  "image": "https://media.istockphoto.com/id/2097346937/photo/karate-training-kids-of-different-ages-in-kimono.jpg?s=612x612&w=0&k=20&c=LxBeJMC_IoAvp350MREpJ-lYVhnTWpLPzigUsZKLguY=",
+                  "image":     "assets/images/demo.jpg",
                 },
               ],
             ),

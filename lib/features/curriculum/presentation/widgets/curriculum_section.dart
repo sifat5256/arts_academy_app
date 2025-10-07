@@ -48,7 +48,7 @@ class CurriculumSection extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Image.network(iconImage, width: 30.w, height: 30.w),
+                Image.asset(iconImage, width: 30.w, height: 30.w),
                 SizedBox(width: 10.w),
                 Expanded(
                   child: Text(

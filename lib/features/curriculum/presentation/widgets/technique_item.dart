@@ -40,7 +40,7 @@ class TechniqueItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.r),
-            child: Image.network(
+            child: Image.asset(
               imagePath,
               width: 60.w,
               height: 60.w,

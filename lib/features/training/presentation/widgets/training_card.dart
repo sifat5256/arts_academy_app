@@ -124,9 +124,9 @@ class _TrainingCardState extends State<TrainingCard> {
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10)
                             ),
-                            child: Image.network(
+                            child: Image.asset(
                               training.videoUrl ??
-                                  'https://via.placeholder.com/400x200',
+                                  'assets/images/demo.jpg',
                               height: 150.h,
                               width: double.infinity,
                               fit: BoxFit.cover,

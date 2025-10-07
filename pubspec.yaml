@@ -68,6 +68,7 @@ flutter:
   assets:
     - assets/videos/demo.mp4
     - assets/videos/
+    - assets/images/demo.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

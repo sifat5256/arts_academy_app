@@ -27,7 +27,7 @@ class TrainingController extends GetxController {
         instructor: "Xingu Del Rosario",
         time: "7:00 PM",
         videoUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT42giTxBcOLZItBWNnRAxJj2wc_64pj8Iu-6Wlug79sHUkKSyAz5YTzds&s",
+        "assets/images/demo.jpg",
         videoDuration: "12:45",
         notes:
         "Focused on hip escape fundamentals and guard retention. Practiced knee shield guard and worked on creating angles for escapes.",
@@ -56,7 +56,7 @@ class TrainingController extends GetxController {
         instructor: "Fernando Chien",
         time: "12:00 PM",
         videoUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT42giTxBcOLZItBWNnRAxJj2wc_64pj8Iu-6Wlug79sHUkKSyAz5YTzds&s",
+        "assets/images/demo.jpg",
         videoDuration: "18:30",
         notes:
         "Advanced single stick flow patterns focusing on 6-count and 8-count combinations. Emphasized smooth transitions.",
@@ -96,7 +96,7 @@ class TrainingController extends GetxController {
         instructor: "Xingu Del Rosario",
         time: "7:00 PM",
         videoUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT42giTxBcOLZItBWNnRAxJj2wc_64pj8Iu-6Wlug79sHUkKSyAz5YTzds&s",
+        "assets/images/demo.jpg",
         videoDuration: "12:45",
         notes:
         "Focused on hip escape fundamentals and guard retention. Practiced knee shield guard and worked on creating angles for escapes.",
