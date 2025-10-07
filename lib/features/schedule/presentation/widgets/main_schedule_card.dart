@@ -22,7 +22,7 @@ class MainScheduleCard extends StatelessWidget {
                   Text(
                     data['time'],
                     style: GoogleFonts.poppins(
-                      color: Color(data['color']),
+                      color: Colors.blue,
                       fontWeight: FontWeight.w600,
                       fontSize: 13.sp,
                       letterSpacing: -0.2,

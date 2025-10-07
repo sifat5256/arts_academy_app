@@ -130,7 +130,7 @@ class FullScheduleBottomSheet extends StatelessWidget {
                                         style: GoogleFonts.poppins(
                                           fontSize: 12.sp,
                                           fontWeight: FontWeight.w600,
-                                          color: Color(classMap['color'] as int),
+                                          color: Colors.blue,
                                         ),
                                       ),
                                       SizedBox(height: 2.h),

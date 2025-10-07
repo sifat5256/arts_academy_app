@@ -74,17 +74,35 @@ class CurriculumSection extends StatelessWidget {
 
         // Expanded list
         if (isExpanded)
-          Column(
-            children: techniques
-                .map(
-                  (tech) => TechniqueItem(
-                title: tech["title"]!,
-                subtitle: tech["subtitle"]!,
-                duration: tech["duration"]!,
-                imagePath: tech["image"]!,
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+            padding: EdgeInsets.all(12.w),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12.r),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.04),
+                  blurRadius: 3,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+              border: Border.all(
+                  color: Colors.grey.shade300
               ),
-            )
-                .toList(),
+            ),
+            child: Column(
+              children: techniques
+                  .map(
+                    (tech) => TechniqueItem(
+                  title: tech["title"]!,
+                  subtitle: tech["subtitle"]!,
+                  duration: tech["duration"]!,
+                  imagePath: tech["image"]!,
+                ),
+              )
+                  .toList(),
+            ),
           ),
       ],
     );

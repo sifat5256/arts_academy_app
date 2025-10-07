@@ -26,24 +26,27 @@ class SearchBox extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.h),
+             // padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 4.h),
               decoration: BoxDecoration(
                 color: Colors.grey.shade200, // background of circular container
-                borderRadius: BorderRadius.circular(20.r), // fully circular
+                borderRadius: BorderRadius.circular(10.r), // fully circular
               ),
               child: Column(
                 children: [
                   TextField(
+
                     decoration: InputDecoration(
+                      isDense: true,
                       hintText: "Search techniques...",
                       hintStyle: GoogleFonts.poppins(
-                        fontSize: 14.sp,
-                        color: Colors.grey[500],
+                        fontSize: 12.sp,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w500
                       ),
-                      prefixIcon: const Icon(BootstrapIcons.search, color: Colors.grey),
+                      prefixIcon:  Icon(BootstrapIcons.search, color: Colors.grey,size: 13.r,),
                       filled: true,
                       fillColor: Colors.grey.shade200, // match container background
-                      contentPadding: EdgeInsets.symmetric( horizontal: 14.w),
+                      contentPadding: EdgeInsets.symmetric( horizontal: 4.w),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.r), // circular
                         borderSide: BorderSide.none,

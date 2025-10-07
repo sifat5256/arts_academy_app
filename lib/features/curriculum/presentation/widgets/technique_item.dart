@@ -20,64 +20,57 @@ class TechniqueItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
-      padding: EdgeInsets.all(12.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.04),
-            blurRadius: 3,
-            offset: const Offset(0, 1),
-          ),
-        ],
-        border: Border.all(
-            color: Colors.grey.shade300
-        ),
-      ),
-      child: Row(
+
+      child: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.r),
-            child: Image.asset(
-              imagePath,
-              width: 60.w,
-              height: 60.w,
-              fit: BoxFit.cover,
-            ),
+          Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.r),
+                child: Image.asset(
+                  imagePath,
+                  width: 50.w,
+                  height: 50.w,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(width: 12.w),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: GoogleFonts.poppins(
+                        fontSize: 13.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Text(
+                      subtitle,
+                      style: GoogleFonts.poppins(
+                        fontSize: 12.sp,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    Text(
+                      duration,
+                      style: GoogleFonts.poppins(
+                        fontSize: 11.sp,
+                        color: Colors.grey[500],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(BootstrapIcons.chevron_right, color: Colors.grey, size: 12.sp),
+
+            ],
           ),
-          SizedBox(width: 12.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: GoogleFonts.poppins(
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black,
-                  ),
-                ),
-                Text(
-                  subtitle,
-                  style: GoogleFonts.poppins(
-                    fontSize: 11.sp,
-                    color: Colors.grey[600],
-                  ),
-                ),
-                Text(
-                  duration,
-                  style: GoogleFonts.poppins(
-                    fontSize: 10.sp,
-                    color: Colors.grey[500],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Icon(BootstrapIcons.chevron_right, color: Colors.grey, size: 12.sp),
+          Divider(
+            color: Colors.grey.shade200,
+          )
         ],
       ),
     );

@@ -18,7 +18,7 @@ class SchedulePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ScheduleController());
     return Scaffold(
-      backgroundColor: Colors.grey.shade100.withOpacity(0.5),
+      backgroundColor: Colors.grey.shade100,
       body: SafeArea(
         child: GetBuilder<ScheduleController>(
           builder: (_) {
@@ -72,8 +72,14 @@ class SchedulePage extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
                     decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Colors.grey, // 👈 only bottom border color
+                          width: 0.5,          // 👈 bottom border thickness
+                        ),
+                      ),
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(6.r),
+
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,7 +156,7 @@ class SchedulePage extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      GestureDetector(
+                      InkWell(
                         onTap: () {
                           Get.bottomSheet(
                             const FullScheduleBottomSheet(),
@@ -161,29 +167,44 @@ class SchedulePage extends StatelessWidget {
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
 
-                          child: Row(
-                            children: [
-                              Icon(
-                                BootstrapIcons.calendar2_check,
-                                size: 12.sp,
-                                color: const Color(0xFF2196F3),
-                              ),
-                              SizedBox(width: 10.w),
-                              Text(
-                                "View Full Schedule",
-                                style: GoogleFonts.poppins(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black87,
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.bottomSheet(
+                                const FullScheduleBottomSheet(),
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                              );
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      BootstrapIcons.calendar2_check,
+                                      size: 12.sp,
+                                      color: const Color(0xFF2196F3),
+                                    ),
+                                    SizedBox(width: 10.w),
+                                    Text(
+                                      "View Full Schedule",
+                                      style: GoogleFonts.poppins(
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+
+
+                                  ],
                                 ),
-                              ),
-                              const Spacer(),
-                              Icon(
-                                BootstrapIcons.chevron_right,
-                                size: 16.sp,
-                                color: Colors.grey.shade600,
-                              ),
-                            ],
+                                Icon(
+                                  BootstrapIcons.chevron_right,
+                                  size: 16.sp,
+                                  color: Colors.grey.shade600,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

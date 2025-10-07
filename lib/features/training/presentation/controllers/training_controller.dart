@@ -42,7 +42,7 @@ class TrainingController extends GetxController {
       TrainingModel(
         day: "Tuesday",
         date: "Oct 5",
-        program: "Capoeira",
+        program: "CAPOEIRA",
         title: "Ginga & Basic Movements",
         instructor: "Paris Synder",
         time: "6:30 PM",
@@ -82,7 +82,7 @@ class TrainingController extends GetxController {
       TrainingModel(
         day: "Friday",
         date: "Oct 8",
-        program: "Capoeira",
+        program: "CAPOEIRA",
         title: "Kicks & Dodges",
         instructor: "Paris Synder",
         time: "7:00 PM",

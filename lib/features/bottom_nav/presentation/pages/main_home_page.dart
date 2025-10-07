@@ -34,13 +34,14 @@ class MainHomePage extends StatelessWidget {
 
           body: pages[controller.selectedIndex],
           bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.white,
             currentIndex: controller.selectedIndex,
             onTap: controller.changeIndex,
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.blue,
             unselectedItemColor: Colors.grey,
-            selectedLabelStyle: GoogleFonts.poppins(fontSize: 12.sp),
-            unselectedLabelStyle: GoogleFonts.poppins(fontSize: 11.sp),
+            selectedLabelStyle: GoogleFonts.poppins(fontSize: 12.sp,fontWeight: FontWeight.w600),
+            unselectedLabelStyle: GoogleFonts.poppins(fontSize: 11.sp,fontWeight: FontWeight.w600),
             items:  [
               BottomNavigationBarItem(
                 icon: Icon(BootstrapIcons.flag,size: 16.r,),

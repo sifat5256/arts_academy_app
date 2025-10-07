@@ -50,8 +50,8 @@ class _TrainingCardState extends State<TrainingCard> {
     final training = widget.training;
     final colorMap = {
       'BJJ': Colors.blue,
-      'CAPOEIRA': Colors.green,
-      'ESKRIMA': Colors.orange,
+      'CAPOEIRA': Colors.teal,
+      'Eskrima': Colors.orange,
     };
 
     return Card(
@@ -73,16 +73,16 @@ class _TrainingCardState extends State<TrainingCard> {
                   children: [
                     Text(training.day,
                         style: GoogleFonts.poppins(
-                            fontSize: 14.sp, fontWeight: FontWeight.w600)),
+                            fontSize: 16.sp, fontWeight: FontWeight.w600)),
                     Text(training.date,
                         style: GoogleFonts.poppins(
-                            fontSize: 12.sp, fontWeight: FontWeight.normal)),
+                            fontSize: 12.sp, fontWeight: FontWeight.w500,color: Colors.grey)),
                   ],
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
                   decoration: BoxDecoration(
-                    color: colorMap[training.program]?.withOpacity(0.15),
+                    color: colorMap[training.program]?.withOpacity(0.10),
                     borderRadius: BorderRadius.circular(8.r),
                   ),
                   child: Text(training.program,
@@ -98,7 +98,7 @@ class _TrainingCardState extends State<TrainingCard> {
 
             Text(training.title,
                 style: GoogleFonts.poppins(
-                    fontSize: 15.sp, fontWeight: FontWeight.w600)),
+                    fontSize: 16.sp, fontWeight: FontWeight.w600)),
             Text("with ${training.instructor}",
                 style: GoogleFonts.poppins(
                     fontSize: 13.sp, color: Colors.grey.shade600)),
@@ -108,7 +108,7 @@ class _TrainingCardState extends State<TrainingCard> {
 
             SizedBox(height: 10.h),
 
-            // ✅ Recap Video Section
+
             if (training.videoDuration != null)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -175,7 +175,7 @@ class _TrainingCardState extends State<TrainingCard> {
                   SizedBox(height: 4.h),
                   Text(
                     "Recap Video",
-                    style: GoogleFonts.poppins(fontSize: 12.sp,color: Colors.grey,fontWeight: FontWeight.w400),
+                    style: GoogleFonts.poppins(fontSize: 12.sp,color: Colors.grey,fontWeight: FontWeight.w600),
                   ),
                 ],
               ),
@@ -225,8 +225,8 @@ class _TrainingCardState extends State<TrainingCard> {
                           ),
                           child: Row(
                             children: [
-                              const Icon(Icons.check,
-                                  size: 14, color: Colors.green),
+                               Icon(Icons.check,
+                                  size: 14, color: Colors.green.shade600),
                               SizedBox(width: 5.w),
                               Text(e,
                                   style: GoogleFonts.poppins(fontSize: 12.sp)),
@@ -247,12 +247,13 @@ class _TrainingCardState extends State<TrainingCard> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.list, size: 18, color: Colors.orange),
+                       Icon(Icons.list, size: 20.r, color: Colors.orange),
                       SizedBox(width: 6.w),
                       Text("Upcoming",
                           style: GoogleFonts.poppins(
                             color: Colors.orange,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14.sp
                           )),
                     ],
                   ),

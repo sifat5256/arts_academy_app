@@ -18,7 +18,7 @@ class CurriculumPage extends StatelessWidget {
     final controller = Get.put(CurriculumController());
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade100.withOpacity(0.5),
+      backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: false,
@@ -77,7 +77,20 @@ class CurriculumPage extends StatelessWidget {
               iconImage:     "assets/images/demo.jpg",
               isExpanded: controller.expandedIndex.value == 1,
               onTap: () => controller.toggleSection(1),
-              techniques: [],
+              techniques: [
+                {
+                  "title": "Guard Pass Fundamentals",
+                  "subtitle": "Ground Control",
+                  "duration": "12:45",
+                  "image":     "assets/images/demo.jpg",
+                },
+                {
+                  "title": "Armbar from Mount",
+                  "subtitle": "Submissions",
+                  "duration": "8:30",
+                  "image":     "assets/images/demo.jpg",
+                },
+              ],
             ),
 
             // ==== SECTION 3 ====

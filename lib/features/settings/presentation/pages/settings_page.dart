@@ -13,7 +13,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Colors.grey.shade100.withOpacity(0.5),
+      backgroundColor:  Colors.grey.shade100,
       appBar: AppBar(
         elevation: 0, // remove shadow completely
         surfaceTintColor: Colors.transparent,
